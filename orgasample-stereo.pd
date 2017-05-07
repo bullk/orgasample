@@ -1,0 +1,40 @@
+#N canvas 143 140 807 606 10;
+#X obj 1 1 cnv 15 804 604 empty empty empty 20 12 0 14 -221145 -66577
+0;
+#X obj 3 3 cnv 20 800 600 empty empty ORGASAMPLE 20 24 0 16 -1 -4033
+0;
+#N canvas 461 423 423 342 bank-selector 0;
+#X obj 20 20 cnv 15 154 244 empty empty empty 15 15 0 14 -2049 -66577
+0;
+#X obj 22 22 cnv 15 150 240 empty empty BANKS 15 20 0 14 -13381 -4033
+0;
+#X obj 37 65 vradio 20 1 0 4 loadbank bankselector empty 0 -8 0 10
+-833 -4033 -4033 -4033;
+#X obj 58 125 bank-item 3 3;
+#X obj 58 105 bank-item 2 2;
+#X obj 58 85 bank-item 1 1;
+#X obj 58 65 bank-item 0 0;
+#X coords 0 -1 1 1 154 244 2 20 20;
+#X restore 30 235 pd bank-selector;
+#N canvas 598 176 402 432 sample-selector 0;
+#X obj 15 20 cnv 15 240 240 empty empty empty 15 15 0 14 -2049 -66577
+0;
+#X obj 17 22 cnv 20 236 236 empty empty SAMPLES 15 20 0 14 -13381 -4033
+0;
+#X obj 32 65 sample-item 1 Airplanes.wav;
+#X obj 32 85 sample-item 1 ArtilleryDistant.wav;
+#X obj 32 105 sample-item 1 BigBen.wav;
+#X obj 32 125 sample-item 1 CornerPreacher.wav;
+#X obj 32 145 sample-item 1 Dogs.wav;
+#X obj 32 165 sample-item 1 FourJet.wav;
+#X obj 32 185 sample-item 1 NappeDecadesCivileDefence.wav;
+#X obj 32 205 sample-item 1 RainBellDripping.wav;
+#X coords 0 -1 1 1 240 240 2 15 20;
+#X restore 233 236 pd sample-selector;
+#X obj 26 95 keys;
+#X obj 231 13 controls;
+#X obj 231 94 key-panel;
+#X obj 141 21 loadbang;
+#X obj 141 51 s reinit;
+#X connect 7 0 8 0;
+#X coords 0 606 1 605 168 102 0;

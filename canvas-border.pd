@@ -1,0 +1,9 @@
+#N canvas 240 198 816 616 10;
+#X obj 1 1 cnv 10 814 614 empty empty empty 15 23 0 14 -1025 -1 0;
+#X obj 2 2 cnv 10 812 612 empty empty empty 15 23 0 14 -2049 -1 0;
+#X obj 3 3 cnv 15 810 610 empty empty empty 15 23 0 14 -3073 -1 0;
+#X obj 4 4 cnv 15 808 608 empty empty empty 15 23 0 14 -4033 -1 0;
+#X obj 5 5 cnv 20 806 606 empty empty empty 15 23 0 14 -3073 -1 0;
+#X obj 6 6 cnv 20 804 604 empty empty empty 15 23 0 14 -2049 -1 0;
+#X obj 7 7 cnv 20 802 602 empty empty empty 15 23 0 14 -1025 -1 0;
+#X obj 8 8 cnv 20 800 600 empty empty ORGASAMPLE 20 24 0 16 -1 -4033 0;

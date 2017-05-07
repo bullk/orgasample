@@ -1,0 +1,25 @@
+#!/bin/bash
+
+pushd $( dirname $0 )
+
+BANKS_FILE=banks.txt
+SAMPLES_FILE=samples.txt
+CONF_FILE=.conf.txt
+
+ls banks > $BANKS_FILE
+
+while read BANK
+do
+	pushd banks/$BANK
+	ls *.wav > $SAMPLES_FILE
+	if [ ! -e $CONF_FILE ]
+	then touch $CONF_FILE
+	fi
+	popd
+done < $BANKS_FILE
+
+puredata -alsamidi -jack -audiodev 0,2 orgasample-stereo.pd &
+
+#~ vkeybd --addr $(aconnect -o | grep "Pure Data" | grep client | cut -d: -f1 | cut -d\  -f2):0 &
+
+popd
