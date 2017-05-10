@@ -1,0 +1,8 @@
+#!/bin/bash
+
+SRC_DIR=$HOME/src
+BIN_DIR=$HOME/.local/bin
+
+ln -s $SRC_DIR/orgasample/orgasample-alsa $BIN_DIR/
+ln -s $SRC_DIR/orgasample/orgasample-jack-2o $BIN_DIR/
+

@@ -1,10 +1,11 @@
 #!/bin/bash
 
-pushd $( dirname $0 )
+pushd $HOME
 
-BANKS_FILE=banks.txt
-SAMPLES_FILE=samples.txt
-CONF_FILE=.conf.txt
+CONF_FILE=.config/BullK/orgasample/config
+BANKS_FILE=.banks
+SAMPLES_FILE=.samples
+BANK_CONF_EXT=conf
 
 ls banks > $BANKS_FILE
 

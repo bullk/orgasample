@@ -1,13 +1,13 @@
-#N canvas 122 262 659 313 10;
+#N canvas 122 272 659 313 10;
 #X obj 20 20 cnv 10 360 120 empty empty empty 15 15 0 14 -2049 -66577
 0;
-#X obj 22 22 cnv 20 356 116 empty sample-title - 15 15 0 12 -13381
--4033 0;
+#X obj 22 22 cnv 20 356 116 empty sample-title NappeDecadesCivileDefence.wav
+15 15 0 12 -13381 -4033 0;
 #X obj 26 161 r panel-sample;
 #X obj 39 107 nbx 5 20 1 10000 0 0 1-rattack panel-attack ATTACK 0
 -8 0 12 -262130 -13381 -262144 10 256;
 #X obj 207 107 hsl 150 20 0 1 0 0 1-rvolume panel-volume VOLUME -2
--8 0 12 -262130 -13381 -262144 7450 0;
+-8 0 12 -262130 -13381 -262144 7400 0;
 #X obj 121 107 nbx 5 20 1 10000 0 0 1-rrelease panel-release RELEASE
 0 -8 0 12 -262130 -13381 -262144 10 256;
 #X obj 462 105 s panel-attack;
@@ -19,23 +19,23 @@
 #X obj 406 27 r panelize;
 #X obj 406 47 t f b;
 #X obj 320 168 r unselect;
-#X msg 320 191 symbole none;
 #X msg 406 234 \; panel-attack send \$1-rattack \; panel-release send
 \$1-rrelease \; panel-volume send \$1-rvolume \;;
 #X obj 309 28 bng 20 250 50 0 empty loaded LOADED 27 10 0 10 -1 -4033
 -4033;
 #X obj 26 208 s sample-title;
 #X msg 26 186 label \$1;
-#X connect 2 0 19 0;
+#X msg 320 191 symbol none;
+#X connect 2 0 18 0;
 #X connect 9 0 8 0;
 #X connect 10 0 6 0;
 #X connect 11 0 7 0;
 #X connect 12 0 13 0;
-#X connect 13 0 16 0;
+#X connect 13 0 15 0;
 #X connect 13 1 10 0;
 #X connect 13 1 11 0;
 #X connect 13 1 9 0;
-#X connect 14 0 15 0;
-#X connect 15 0 16 0;
-#X connect 19 0 18 0;
+#X connect 14 0 19 0;
+#X connect 18 0 17 0;
+#X connect 19 0 15 0;
 #X coords 0 -1 1 1 360 120 1 20 20;

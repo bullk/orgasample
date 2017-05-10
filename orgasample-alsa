@@ -1,29 +1,42 @@
 #!/bin/bash
 
-pushd $( dirname $0 )
+#INSTALL_DIR=$HOME/src/orgasample
+CONF_FILE=$HOME/.config/BullK/orgasample.conf
+DATA_DIR=$(grep data_dir $CONF_FILE | cut -d\  -f2)
+#echo $DATA_DIR
+BANKS_FILE=.banks
+SAMPLES_FILE=.samples
+BANK_CONF_EXT=conf
 
-BANKS_FILE=banks.txt
-SAMPLES_FILE=samples.txt
-CONF_FILE=.conf.txt
+pushd $DATA_DIR
 
-ls banks > $BANKS_FILE
+if [ -d banks ]
+then
 
-while read BANK
-do
-	pushd banks/$BANK
-	ls *.wav > $SAMPLES_FILE
-	if [ ! -e $CONF_FILE ]
-	then touch $CONF_FILE
+	ls banks > $BANKS_FILE
+
+	while read BANK
+	do
+		pushd banks/$BANK
+		ls *.wav > $SAMPLES_FILE
+		if [ ! -e .$BANK.$BANK_CONF_EXT ]
+		then touch .$BANK.$BANK_CONF_EXT
+		fi
+		popd
+	done < $BANKS_FILE
+
+	pd -alsamidi -alsa -audiodev 1,1 orgasample-stereo.pd &
+	sleep 1
+
+	if [ -z $(pidof vkeybd) ]
+	then vkeybd --addr $(aconnect -o | grep "Pure Data" | grep client | cut -d: -f1 | cut -d\  -f2):0 &
 	fi
-	popd
-done < $BANKS_FILE
-
-pd -alsamidi -alsa -audiodev 0,2 orgasample-stereo.pd &
-sleep 1
-
-if [ -z $(pidof vkeybd) ]
-then vkeybd --addr $(aconnect -o | grep "Pure Data" | grep client | cut -d: -f1 | cut -d\  -f2):0 &
+else
+	notify-send Orgasample "le programme ne parvient pas à localiser les données"
 fi
 
 popd
-#~ sleep 10000
+
+sleep 10000
+
+
