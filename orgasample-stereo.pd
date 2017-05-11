@@ -1,39 +1,119 @@
-#N canvas 558 164 807 606 10;
-#X obj 1 1 cnv 10 804 604 empty empty empty 20 12 0 14 -221145 -66577
+#N canvas 509 110 606 506 10;
+#X obj 1 1 cnv 10 604 504 empty empty empty 20 12 0 14 -221145 -66577
 0;
-#X obj 3 3 cnv 20 800 600 empty empty ORGASAMPLE 24 48 0 28 -1 -4033
+#X obj 3 3 cnv 20 600 500 empty empty ORGASAMPLE 36 54 0 24 -1 -4033
 0;
-#N canvas 254 473 423 342 bank-selector 0;
+#N canvas 254 483 423 342 bank-selector 0;
 #X obj 20 20 cnv 15 160 240 empty empty empty 15 15 0 14 -2049 -66577
 0;
 #X obj 22 22 cnv 15 156 236 empty empty BANKS 15 20 0 14 -13381 -4033
 0;
 #X obj 37 65 vradio 20 1 0 4 loadbank bankselector empty 0 -8 0 10
--833 -4033 -4033 0;
+-833 -4033 -4033 -4033;
 #X obj 58 125 bank-item 3 3;
 #X obj 58 105 bank-item 2 2;
 #X obj 58 85 bank-item 1 1;
 #X obj 58 65 bank-item 0 0;
 #X coords 0 -1 1 1 160 240 2 20 20;
-#X restore 30 238 pd bank-selector;
-#N canvas 598 196 402 432 sample-selector 0;
+#X restore 29 241 pd bank-selector;
+#N canvas 598 206 402 432 sample-selector 0;
 #X obj 15 20 cnv 15 360 240 empty empty empty 15 15 0 14 -2049 -66577
 0;
 #X obj 17 22 cnv 20 356 236 empty empty SAMPLES 15 20 0 14 -13381 -4033
 0;
-#X obj 32 65 sample-item 1 Airplanes.wav;
-#X obj 32 85 sample-item 1 ArtilleryDistant.wav;
-#X obj 32 105 sample-item 1 BigBen.wav;
-#X obj 32 125 sample-item 1 CornerPreacher.wav;
-#X obj 32 145 sample-item 1 Dogs.wav;
-#X obj 32 165 sample-item 1 FourJet.wav;
-#X obj 32 185 sample-item 1 NappeDecadesCivileDefence.wav;
-#X obj 32 205 sample-item 1 RainBellDripping.wav;
+#X obj 32 65 sample-item 1 Airplanes-mono.wav;
+#X obj 32 85 sample-item 1 ArtilleryDistant-mono.wav;
+#X obj 32 105 sample-item 1 BigBen-mono.wav;
+#X obj 32 125 sample-item 1 CornerPreacher-mono.wav;
+#X obj 32 145 sample-item 1 Dogs-mono.wav;
+#X obj 32 165 sample-item 1 FourJet-mono.wav;
+#X obj 32 185 sample-item 1 NappeDecadesCivileDefence-mono.wav;
+#X obj 32 205 sample-item 1 RainBellDripping-mono.wav;
 #X coords 0 -1 1 1 360 240 2 15 20;
-#X restore 219 238 pd sample-selector;
-#X obj 26 109 keys;
-#X obj 219 101 key-panel;
-#N canvas 70 697 443 241 controls 0;
+#X restore 218 241 pd sample-selector;
+#N canvas 3 145 449 354 keys 0;
+#X obj 21 137 samplekey-stereo 1;
+#X obj 21 91 bng 30 250 50 0 1-select empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 72 61 bng 30 250 50 0 3-select empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 106 61 bng 30 250 50 0 5-select empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 55 91 bng 30 250 50 0 2-select empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 89 91 bng 30 250 50 0 4-select empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 140 61 bng 30 250 50 0 7-select empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 123 91 bng 30 250 50 0 6-select empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 157 91 bng 30 250 50 0 8-select empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 55 21 cnv 15 30 100 empty key-2 empty 20 12 0 14 -262134 -262134
+0;
+#X obj 89 21 cnv 15 30 100 empty key-4 empty 20 12 0 14 -262134 -262134
+0;
+#X obj 123 21 cnv 15 30 100 empty key-6 empty 20 12 0 14 -262134 -262134
+0;
+#X obj 157 21 cnv 15 30 100 empty key-8 empty 20 12 0 14 -262134 -262134
+0;
+#X obj 72 21 cnv 15 30 70 empty key-3 empty 20 12 0 14 -1 -1 0;
+#X obj 106 21 cnv 15 30 70 empty key-5 empty 20 12 0 14 -1 -1 0;
+#X obj 140 21 cnv 15 30 70 empty key-7 empty 20 12 0 14 -1 -1 0;
+#X obj 21 21 cnv 15 30 100 empty key-1 empty 20 12 0 14 -2049 -2049
+0;
+#X obj 21 162 samplekey-stereo 2;
+#X obj 20 311 samplekey-stereo 8;
+#X obj 21 236 samplekey-stereo 5;
+#X obj 21 186 samplekey-stereo 3;
+#X obj 21 211 samplekey-stereo 4;
+#X obj 20 286 samplekey-stereo 7;
+#X obj 20 261 samplekey-stereo 6;
+#X coords 0 -1 1 1 168 102 2 20 20;
+#X restore 26 114 pd keys;
+#N canvas 680 749 663 322 key-panel 0;
+#X obj 20 20 cnv 10 360 120 empty empty empty 15 15 0 14 -2049 -66577
+0;
+#X obj 22 22 cnv 20 356 116 empty sample-title NappeDecadesCivileDefence-mono.wav
+15 15 0 12 -13381 -4033 0;
+#X obj 26 161 r panel-sample;
+#X obj 39 107 nbx 5 20 1 10000 0 0 1-rattack panel-attack ATTACK 0
+-8 0 12 -262130 -13381 -262144 10 256;
+#X obj 207 107 hsl 150 20 0 1 0 0 1-rvolume panel-volume VOLUME -2
+-8 0 12 -262130 -13381 -262144 7400 0;
+#X obj 121 107 nbx 5 20 1 10000 0 0 1-rrelease panel-release RELEASE
+0 -8 0 12 -262130 -13381 -262144 10 256;
+#X obj 462 105 s panel-attack;
+#X obj 450 156 s panel-release;
+#X obj 438 208 s panel-volume;
+#X obj 438 184 value volume;
+#X obj 462 81 value attack;
+#X obj 450 132 value release;
+#X obj 406 27 r panelize;
+#X obj 406 47 t f b;
+#X obj 320 168 r unselect;
+#X msg 406 234 \; panel-attack send \$1-rattack \; panel-release send
+\$1-rrelease \; panel-volume send \$1-rvolume \;;
+#X obj 309 28 bng 20 250 50 0 empty loaded LOADED 27 10 0 10 -1 -4033
+-4033;
+#X obj 26 208 s sample-title;
+#X msg 26 186 label \$1;
+#X msg 320 191 symbol none;
+#X connect 2 0 18 0;
+#X connect 9 0 8 0;
+#X connect 10 0 6 0;
+#X connect 11 0 7 0;
+#X connect 12 0 13 0;
+#X connect 13 0 15 0;
+#X connect 13 1 10 0;
+#X connect 13 1 11 0;
+#X connect 13 1 9 0;
+#X connect 14 0 19 0;
+#X connect 18 0 17 0;
+#X connect 19 0 15 0;
+#X coords 0 -1 1 1 360 120 2 20 20;
+#X restore 218 104 pd key-panel;
+#N canvas 70 712 443 241 controls 0;
 #X obj 20 20 cnv 10 360 64 empty empty empty 10 15 0 12 -2049 -1 0
 ;
 #X obj 22 22 cnv 20 356 60 empty empty control 10 15 0 12 -13381 -4033
@@ -131,7 +211,7 @@ empty 0 -8 0 10 -833 -4033 -4033 -4033;
 #X connect 8 1 9 0;
 #X connect 10 0 8 0;
 #X restore 20 100 pd init;
-#N canvas 574 538 640 479 state 0;
+#N canvas 574 543 640 479 state 0;
 #X obj 219 310 textfile;
 #X msg 136 145 clear;
 #X obj 199 116 r file;
@@ -207,7 +287,7 @@ empty 0 -8 0 10 -833 -4033 -4033 -4033;
 #X connect 23 0 0 0;
 #X connect 24 0 0 0;
 #X restore 82 100 pd state;
-#N canvas 98 383 554 406 manage-samsel 0;
+#N canvas 98 398 554 406 manage-samsel 0;
 #X obj 169 165 textfile;
 #X obj 169 136 until;
 #X obj 41 335 s pd-sample-selector;
@@ -217,7 +297,7 @@ empty 0 -8 0 10 -833 -4033 -4033 -4033;
 #X obj 271 94 value bank;
 #X obj 169 188 t a b;
 #X obj 169 266 pack s f f;
-#N canvas 99 105 450 300 init-samsel 0;
+#N canvas 99 110 450 300 init-samsel 0;
 #X obj 14 12 inlet;
 #X obj 14 221 outlet;
 #X msg 14 50 clear \, obj 15 20 cnv 15 360 240 empty empty empty 15
@@ -251,7 +331,7 @@ empty 0 -8 0 10 -833 -4033 -4033 -4033;
 #X connect 12 0 3 1;
 #X connect 13 0 0 0;
 #X restore 20 134 pd manage-samsel;
-#N canvas 1376 423 420 278 command 0;
+#N canvas 1376 428 420 278 command 0;
 #X obj 10 233 s 1-play;
 #X obj 35 210 s 2-play;
 #X obj 60 187 s 3-play;
@@ -311,5 +391,5 @@ empty 0 -8 0 10 -833 -4033 -4033 -4033;
 #X connect 12 0 10 0;
 #X connect 13 0 14 0;
 #X coords 0 -1 1 1 360 64 2 20 20;
-#X restore 219 21 pd controls;
-#X coords 0 606 1 605 168 102 0;
+#X restore 218 24 pd controls;
+#X coords 0 506 1 505 168 102 0;

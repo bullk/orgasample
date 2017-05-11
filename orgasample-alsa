@@ -25,7 +25,7 @@ then
 		popd
 	done < $BANKS_FILE
 
-	pd -alsamidi -alsa -audiodev 1,1 orgasample-stereo.pd &
+	pd -alsamidi -alsa -audiodev 3,3 orgasample-stereo.pd &
 	sleep 1
 
 	if [ -z $(pidof vkeybd) ]
@@ -37,6 +37,6 @@ fi
 
 popd
 
-sleep 10000
+#sleep 10000
 
 
