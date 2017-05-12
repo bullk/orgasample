@@ -1,6 +1,5 @@
 #!/bin/bash
 
-#INSTALL_DIR=$HOME/src/orgasample
 CONF_FILE=$HOME/.config/BullK/orgasample.conf
 DATA_DIR=$(grep data_dir $CONF_FILE | cut -d\  -f2)
 #echo $DATA_DIR

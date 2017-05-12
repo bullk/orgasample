@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Orgasample
+Comment=
+Exec=/home/bullk/.local/bin/orgasample-jack-2o
+Icon=jack-keyboard
+Terminal=false
+StartupNotify=false

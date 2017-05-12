@@ -1,11 +1,14 @@
 #!/bin/bash
 
-SRC_DIR=$HOME/src
+CONF_FILE=$HOME/.config/BullK/orgasample.conf
+SRC_DIR=$PWD
 BIN_DIR=$HOME/.local/bin
 DATA_DIR=$HOME/Documents/orgasample
 
-ln -s $SRC_DIR/orgasample/orgasample-alsa $BIN_DIR/
-ln -s $SRC_DIR/orgasample/orgasample-jack-2o $BIN_DIR/
+mkdir -p $DATA_DIR $HOME/.config/BullK/
 
-mkdir $DATA_DIR
-ln -s $SRC_DIR/orgasample-stereo.pd $DATA_DIR/
+ln -sf $SRC_DIR/orgasample-alsa $BIN_DIR/
+ln -sf $SRC_DIR/orgasample-jack-2o $BIN_DIR/
+ln -sf $SRC_DIR/orgasample-stereo.pd $DATA_DIR/
+
+echo "data_dir $DATA_DIR" > $CONF_FILE
