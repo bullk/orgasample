@@ -2,7 +2,10 @@
 
 SRC_DIR=$HOME/src
 BIN_DIR=$HOME/.local/bin
+DATA_DIR=$HOME/Documents/orgasample
 
 ln -s $SRC_DIR/orgasample/orgasample-alsa $BIN_DIR/
 ln -s $SRC_DIR/orgasample/orgasample-jack-2o $BIN_DIR/
 
+mkdir $DATA_DIR
+ln -s $SRC_DIR/orgasample-stereo.pd $DATA_DIR/
