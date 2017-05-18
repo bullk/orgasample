@@ -1,4 +1,4 @@
-#N canvas 509 95 606 506 10;
+#N canvas 509 100 606 506 10;
 #X obj 1 1 cnv 10 604 504 empty empty empty 20 12 0 14 -221145 -66577
 0;
 #X obj 3 3 cnv 20 600 500 empty empty ORGASAMPLE 36 54 0 24 -1 -4033
@@ -9,7 +9,7 @@
 #X obj 22 22 cnv 15 156 236 empty empty BANKS 15 20 0 14 -13381 -4033
 0;
 #X obj 37 65 vradio 20 1 0 4 loadbank bankselector empty 0 -8 0 10
--833 -4033 -4033 1;
+-833 -4033 -4033 -4033;
 #X obj 58 125 bank-item 3 3;
 #X obj 58 105 bank-item 2 2;
 #X obj 58 85 bank-item 1 1;
@@ -21,9 +21,14 @@
 0;
 #X obj 17 22 cnv 20 356 236 empty empty SAMPLES 15 20 0 14 -13381 -4033
 0;
-#X obj 32 65 sample-item 1 BarkSnarl.wav;
-#X obj 32 85 sample-item 1 Dogs.wav;
-#X obj 32 105 sample-item 1 Growl.wav;
+#X obj 32 65 sample-item 1 Airplanes-mono.wav;
+#X obj 32 85 sample-item 1 ArtilleryDistant-mono.wav;
+#X obj 32 105 sample-item 1 BigBen-mono.wav;
+#X obj 32 125 sample-item 1 CornerPreacher-mono.wav;
+#X obj 32 145 sample-item 1 Dogs-mono.wav;
+#X obj 32 165 sample-item 1 FourJet-mono.wav;
+#X obj 32 185 sample-item 1 NappeDecadesCivileDefence-mono.wav;
+#X obj 32 205 sample-item 1 RainBellDripping-mono.wav;
 #X coords 0 -1 1 1 360 240 2 15 20;
 #X restore 218 241 pd sample-selector;
 #N canvas 3 145 449 354 keys 0;
@@ -69,8 +74,8 @@
 #N canvas 680 749 663 322 key-panel 0;
 #X obj 20 20 cnv 10 360 120 empty empty empty 15 15 0 14 -2049 -66577
 0;
-#X obj 22 22 cnv 20 356 116 empty sample-title BarkSnarl.wav 15 15
-0 12 -13381 -4033 0;
+#X obj 22 22 cnv 20 356 116 empty sample-title NappeDecadesCivileDefence-mono.wav
+15 15 0 12 -13381 -4033 0;
 #X obj 26 161 r panel-sample;
 #X obj 39 107 nbx 5 20 1 10000 0 0 1-rattack panel-attack ATTACK 0
 -8 0 12 -262130 -13381 -262144 10 256;
@@ -108,7 +113,7 @@
 #X connect 19 0 15 0;
 #X coords 0 -1 1 1 360 120 2 20 20;
 #X restore 218 104 pd key-panel;
-#N canvas 70 722 443 241 controls 0;
+#N canvas 70 727 443 241 controls 0;
 #X obj 20 20 cnv 10 360 64 empty empty empty 10 15 0 12 -2049 -1 0
 ;
 #X obj 22 22 cnv 20 356 60 empty empty control 10 15 0 12 -13381 -4033
@@ -317,7 +322,7 @@ empty 0 -8 0 10 -833 -4033 -4033 -4033;
 #X connect 12 0 3 1;
 #X connect 13 0 0 0;
 #X restore 20 134 pd manage-samsel;
-#N canvas 1376 428 420 278 command 0;
+#N canvas 545 546 506 430 command 0;
 #X obj 10 233 s 1-play;
 #X obj 35 210 s 2-play;
 #X obj 60 187 s 3-play;
@@ -329,6 +334,11 @@ empty 0 -8 0 10 -833 -4033 -4033 -4033;
 #X obj 10 29 pack f f;
 #X obj 10 6 notein 1;
 #X obj 10 52 route 28 29 30 31 32 33 34 35;
+#X obj 14 338 textfile;
+#X obj 14 290 sel 127;
+#X msg 14 362 \; pd dsp 0 \; pd quit \;;
+#X obj 14 266 ctlin 110 16;
+#X msg 14 314 set syntest \, write /tmp/.bullklock cr \, bang;
 #X connect 8 0 10 0;
 #X connect 9 0 8 0;
 #X connect 9 1 8 1;
@@ -340,6 +350,10 @@ empty 0 -8 0 10 -833 -4033 -4033 -4033;
 #X connect 10 5 5 0;
 #X connect 10 6 6 0;
 #X connect 10 7 7 0;
+#X connect 11 0 13 0;
+#X connect 12 0 15 0;
+#X connect 14 0 12 0;
+#X connect 15 0 11 0;
 #X restore 151 100 pd command;
 #X obj 30 55 bng 20 250 50 0 exit empty SAVE_&_EXIT 27 10 0 10 -1 -262144
 -262144;
