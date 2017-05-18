@@ -3,9 +3,14 @@
 CONF_FILE=$HOME/.config/BullK/orgasample.conf
 SRC_DIR=$PWD
 BIN_DIR=$HOME/.local/bin
-DATA_DIR=$HOME/Documents/orgasample
+if [ -e "$HOME/Documents" ]
+then
+	DATA_DIR=$HOME/Documents/orgasample
+else
+	DATA_DIR=$HOME/orgasample
+fi
 
-mkdir -p $DATA_DIR $HOME/.config/BullK/
+mkdir -p $BIN_DIR $DATA_DIR $HOME/.config/BullK/
 
 ln -sf $SRC_DIR/orgasample-alsa $BIN_DIR/
 ln -sf $SRC_DIR/orgasample-jack-2o $BIN_DIR/
