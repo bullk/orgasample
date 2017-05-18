@@ -1,41 +1,55 @@
 #!/bin/bash
 
-CONF_FILE=$HOME/.config/BullK/orgasample.conf
-DATA_DIR=$(grep data_dir $CONF_FILE | cut -d\  -f2)
-#echo $DATA_DIR
-BANKS_FILE=.banks
-SAMPLES_FILE=.samples
-BANK_CONF_EXT=conf
+LOCKFILE=/tmp/bullk.lock
 
-pushd $DATA_DIR
-
-if [ -d banks ]
-then
-
-	ls banks > $BANKS_FILE
-
-	while read BANK
-	do
-		pushd banks/$BANK
-		ls *.wav > $SAMPLES_FILE
-		if [ ! -e .$BANK.$BANK_CONF_EXT ]
-		then touch .$BANK.$BANK_CONF_EXT
-		fi
-		popd
-	done < $BANKS_FILE
-
-	pd -alsamidi -alsa -audiodev 3,3 orgasample-stereo.pd &
-	sleep 1
-
-	if [ -z $(pidof vkeybd) ]
-	then vkeybd --addr $(aconnect -o | grep "Pure Data" | grep client | cut -d: -f1 | cut -d\  -f2):0 &
-	fi
+if [ $(uname -n) = "raspberrypi" ]; then
+	PD_OPTIONS="-noadc -audiooutdev 1 -outchannels 2 -nort -nogui"
 else
-	notify-send Orgasample "le programme ne parvient pas à localiser les données"
+	PD_OPTIONS="-audiodev 3,3"
 fi
 
-popd
 
+#if [ -e $LOCKFILE ]; then
+	#echo "BullK syntest est déjà démarré"
+#else
+
+	CONF_FILE=$HOME/.config/BullK/orgasample.conf
+	DATA_DIR=$(grep data_dir $CONF_FILE | cut -d\  -f2)
+	#echo $DATA_DIR
+	BANKS_FILE=.banks
+	SAMPLES_FILE=.samples
+	BANK_CONF_EXT=conf
+
+	pushd $DATA_DIR
+
+	if [ -d banks ]
+	then
+
+		ls banks > $BANKS_FILE
+
+		while read BANK
+		do
+			pushd banks/$BANK
+			ls *.wav > $SAMPLES_FILE
+			if [ ! -e .$BANK.$BANK_CONF_EXT ]
+			then touch .$BANK.$BANK_CONF_EXT
+			fi
+			popd
+		done < $BANKS_FILE
+
+		pd -alsamidi -alsa $PD_OPTIONS orgasample-stereo.pd &
+		sleep 1
+
+		if [ -z $(pidof vkeybd) ]
+		then vkeybd --addr $(aconnect -o | grep "Pure Data" | grep client | cut -d: -f1 | cut -d\  -f2):0 &
+		fi
+	else
+		notify-send Orgasample "le programme ne parvient pas à localiser les données"
+	fi
+
+	popd
+
+#fi
 #sleep 10000
 
 
