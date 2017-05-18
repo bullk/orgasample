@@ -1,4 +1,4 @@
-#N canvas 509 100 606 506 10;
+#N canvas 509 105 606 506 10;
 #X obj 1 1 cnv 10 604 504 empty empty empty 20 12 0 14 -221145 -66577
 0;
 #X obj 3 3 cnv 20 600 500 empty empty ORGASAMPLE 36 54 0 24 -1 -4033
@@ -113,14 +113,14 @@
 #X connect 19 0 15 0;
 #X coords 0 -1 1 1 360 120 2 20 20;
 #X restore 218 104 pd key-panel;
-#N canvas 70 727 443 241 controls 0;
+#N canvas 70 732 443 241 controls 0;
 #X obj 20 20 cnv 10 360 64 empty empty empty 10 15 0 12 -2049 -1 0
 ;
 #X obj 22 22 cnv 20 356 60 empty empty control 10 15 0 12 -13381 -4033
 0;
 #X obj 133 55 bng 20 250 50 0 reinit empty REINIT 27 10 0 10 -1 -204786
 -204786;
-#N canvas 1190 729 267 256 init 0;
+#N canvas 1190 761 267 256 init 0;
 #X obj 19 172 delay 1000;
 #X obj 19 15 r reinit;
 #X msg 19 196 \; pd dsp 1 \;;
@@ -322,7 +322,7 @@ empty 0 -8 0 10 -833 -4033 -4033 -4033;
 #X connect 12 0 3 1;
 #X connect 13 0 0 0;
 #X restore 20 134 pd manage-samsel;
-#N canvas 545 546 506 430 command 0;
+#N canvas 545 551 506 430 command 0;
 #X obj 10 233 s 1-play;
 #X obj 35 210 s 2-play;
 #X obj 60 187 s 3-play;
@@ -338,7 +338,7 @@ empty 0 -8 0 10 -833 -4033 -4033 -4033;
 #X obj 14 290 sel 127;
 #X msg 14 362 \; pd dsp 0 \; pd quit \;;
 #X obj 14 266 ctlin 110 16;
-#X msg 14 314 set syntest \, write /tmp/.bullklock cr \, bang;
+#X msg 14 314 set syntest \, write /tmp/bullk.lock cr \, bang;
 #X connect 8 0 10 0;
 #X connect 9 0 8 0;
 #X connect 9 1 8 1;
