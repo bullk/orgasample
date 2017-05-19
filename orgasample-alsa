@@ -3,8 +3,10 @@
 LOCKFILE=/tmp/bullk.lock
 
 if [ $(uname -n) = "raspberrypi" ]; then
+	RPI=true
 	PD_OPTIONS="-noadc -audiooutdev 1 -outchannels 2 -nort -nogui"
 else
+	RPI=false
 	PD_OPTIONS="-audiodev 3,3"
 fi
 
@@ -45,8 +47,11 @@ fi
 		pd -alsamidi -alsa $PD_OPTIONS orgasample-stereo.pd &
 		sleep 1
 
-		if [ -z $(pidof vkeybd) ]
-		then vkeybd --addr $(aconnect -o | grep "Pure Data" | grep client | cut -d: -f1 | cut -d\  -f2):0 &
+		if ($RPI)
+		then
+			if [ -z $(pidof vkeybd) ]
+			then vkeybd --addr $(aconnect -o | grep "Pure Data" | grep client | cut -d: -f1 | cut -d\  -f2):0 &
+			fi
 		fi
 	else
 		notify-send Orgasample "le programme ne parvient pas à localiser les données"
