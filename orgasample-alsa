@@ -29,33 +29,35 @@ fi
 	
 	pushd $DATA_DIR
 
-	if [ -d banks ]
-	then
+	ls banks > $BANKS_FILE
 
-		ls banks > $BANKS_FILE
-
-		while read BANK
-		do
-			pushd banks/$BANK
-			ls *.wav > $SAMPLES_FILE
-			if [ ! -e .$BANK.$BANK_CONF_EXT ]
-			then touch .$BANK.$BANK_CONF_EXT
-			fi
-			popd
-		done < $BANKS_FILE
-
-		pd -alsamidi -alsa $PD_OPTIONS orgasample-stereo.pd &
-		sleep 1
-
-		if ($RPI)
-		then
-			if [ -z $(pidof vkeybd) ]
-			then vkeybd --addr $(aconnect -o | grep "Pure Data" | grep client | cut -d: -f1 | cut -d\  -f2):0 &
-			fi
+	while read BANK
+	do
+		pushd banks/$BANK
+		ls *.wav > $SAMPLES_FILE
+		if [ ! -e .$BANK.$BANK_CONF_EXT ]
+		then touch .$BANK.$BANK_CONF_EXT
 		fi
-	else
-		notify-send Orgasample "le programme ne parvient pas à localiser les données"
+		popd
+	done < $BANKS_FILE
+
+	pd -alsamidi -alsa $PD_OPTIONS orgasample-stereo.pd &
+	sleep 1
+
+	if ($RPI)
+	then
+		if [ -z $(pidof vkeybd) ]
+		then vkeybd --addr $(aconnect -o | grep "Pure Data" | grep client | cut -d: -f1 | cut -d\  -f2):0 &
+		fi
 	fi
+
+	KBPORT=$(aconnect -i | grep Oxygen | grep client | cut -d: -f1 | cut -d\  -f2):0
+	PDPORT=$(aconnect -o | grep "Pure Data" | grep client | cut -d: -f1 | cut -d\  -f2):0
+	aconnect $KBPORT $PDPORT
+	
+	until [ -z "$(ps -a | grep puredata)" ]; do
+		sleep 1
+	done
 
 	popd
 
