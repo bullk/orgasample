@@ -20,6 +20,11 @@ fi
 	SAMPLES_FILE=.samples
 	BANK_CONF_EXT=conf
 
+	if [ ! -d $DATA_DIR ]
+	then
+		mkdir -p $DATA_DIR/banks/0
+	fi
+	
 	pushd $DATA_DIR
 
 	if [ -d banks ]
